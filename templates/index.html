@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<style>
+  body {
+    background-color: #f8f8f8;
+    font-family: 'Arimo', sans-serif;
+  }
+  
+  .login {
+    margin: 50px auto;
+    width: 400px;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px #ddd;
+    text-align: center;
+  }
+  
+  h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 36px;
+    margin-bottom: 30px;
+    color: #444;
+  }
+  
+  label {
+    font-family: 'Hind', sans-serif;
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  input[type=file] {
+    margin-bottom: 20px;
+  }
+  
+  button {
+    border: none;
+    background-color: #26ae60;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  button:hover {
+    background-color: #2ecc71;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  
+  thead th {
+    text-align: left;
+    background-color: #f2f2f2;
+    font-size: 16px;
+    color: #666;
+    padding: 10px;
+  }
+  
+  tbody td {
+    text-align: left;
+    font-size: 16px;
+    color: #444;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+</style>
+
+<body>
+  <div class="login">
+    <div class="predict"><h1>Predict Salary Analysis</h1></div>
+    
+
+    <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
+      <label for="file_input">Upload CSV file:</label>
+      <input type="file" name="file_input" accept=".csv" required>
+
+      <br>
+      <br>
+
+      <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+    <br>
+    <br>
+
+    <div id="prediction_output">
+      {% if prediction_data %}
+      <table>
+        <thead>
+          <tr>
+            <th>Experience</th>
+            <th>Salary Prediction</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in prediction_data %}
+          <tr>
+            <td>{{ data[0] }}</td>
+            <td>{{ data[1] }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+  </div>
+</body>
+</html>
