@@ -23,3 +23,10 @@ Once the Flask application is running, you can access the home page by visiting 
 
 You can also use the /predict_api endpoint to get predictions programmatically. Send a POST request to http://localhost:5000/predict_api with a JSON payload containing the years of experience data. The endpoint will return a JSON response containing the predicted salaries.
 
+# Model
+The machine learning model used in this project is a simple linear regression model that predicts salaries based on years of experience. The model is trained on the Salary_Data.csv dataset, which contains salaries and corresponding years of experience for a set of employees.
+
+The model is saved as a pickle file model.pkl and loaded into memory when the Flask application starts.
+
+# Github Link:
+https://github.com/manishgoyal30/Salary_Predictor

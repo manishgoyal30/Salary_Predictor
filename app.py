@@ -37,4 +37,4 @@ def predict_api():
     return jsonify(output)
 
 if __name__ == "_main_":
-    app.run(debug=True, port=5000)
+    app.run(debug=True, port=5000)https://github.com/manishgoyal30/Salary_Predictor
