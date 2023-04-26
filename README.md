@@ -14,6 +14,8 @@ pickle
 
 # Once the dependencies are installed, you can start the Flask application by running:
 python app.py
+or
+flask run
 
 This will start the Flask application on http://localhost:5000/.
 
